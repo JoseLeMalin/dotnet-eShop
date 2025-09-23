@@ -65,7 +65,7 @@ var webhooksClient = builder.AddProject<Projects.WebhookClient>("webhooksclient"
     .WithReference(webHooksApi)
     .WithEnvironment("IdentityUrl", identityEndpoint);
 
-var webApp = builder.AddProject<Projects.WebApp>("webapp", launchProfileName)
+var webAppReact = builder.AddProject<Projects.WebAppReact>("webappreact", launchProfileName)
     .WithExternalHttpEndpoints()
     .WithUrls(c => c.Urls.ForEach(u => u.DisplayText = $"Online Store ({u.Endpoint?.EndpointName})"))
     .WithReference(basketApi)
@@ -73,22 +73,33 @@ var webApp = builder.AddProject<Projects.WebApp>("webapp", launchProfileName)
     .WithReference(orderingApi)
     .WithReference(rabbitMq).WaitFor(rabbitMq)
     .WithEnvironment("IdentityUrl", identityEndpoint);
+/* var webApp = builder.AddProject<Projects.WebApp>("webapp", launchProfileName)
+    .WithExternalHttpEndpoints()
+    .WithUrls(c => c.Urls.ForEach(u => u.DisplayText = $"Online Store ({u.Endpoint?.EndpointName})"))
+    .WithReference(basketApi)
+    .WithReference(catalogApi)
+    .WithReference(orderingApi)
+    .WithReference(rabbitMq).WaitFor(rabbitMq)
+    .WithEnvironment("IdentityUrl", identityEndpoint); */
 
 // set to true if you want to use OpenAI
 bool useOpenAI = false;
 if (useOpenAI)
 {
-    builder.AddOpenAI(catalogApi, webApp, OpenAITarget.OpenAI); // set to AzureOpenAI if you want to use Azure OpenAI
+   //  builder.AddOpenAI(catalogApi, webApp, OpenAITarget.OpenAI); // set to AzureOpenAI if you want to use Azure OpenAI
+    builder.AddOpenAI(catalogApi, webAppReact, OpenAITarget.OpenAI); // set to AzureOpenAI if you want to use Azure OpenAI
 }
 
 bool useOllama = false;
 if (useOllama)
 {
-    builder.AddOllama(catalogApi, webApp);
+  //  builder.AddOllama(catalogApi, webApp);
+    builder.AddOllama(catalogApi, webAppReact);
 }
 
 // Wire up the callback urls (self referencing)
-webApp.WithEnvironment("CallBackUrl", webApp.GetEndpoint(launchProfileName));
+// webApp.WithEnvironment("CallBackUrl", webApp.GetEndpoint(launchProfileName));
+// webAppReact.WithEnvironment("CallBackUrl", webAppReact.GetEndpoint(launchProfileName));
 webhooksClient.WithEnvironment("CallBackUrl", webhooksClient.GetEndpoint(launchProfileName));
 
 // Identity has a reference to all of the apps for callback urls, this is a cyclic reference
@@ -96,7 +107,8 @@ identityApi.WithEnvironment("BasketApiClient", basketApi.GetEndpoint("http"))
            .WithEnvironment("OrderingApiClient", orderingApi.GetEndpoint("http"))
            .WithEnvironment("WebhooksApiClient", webHooksApi.GetEndpoint("http"))
            .WithEnvironment("WebhooksWebClient", webhooksClient.GetEndpoint(launchProfileName))
-           .WithEnvironment("WebAppClient", webApp.GetEndpoint(launchProfileName));
+           //.WithEnvironment("WebAppClient", webApp.GetEndpoint(launchProfileName));
+           .WithEnvironment("WebAppClient", webAppReact.GetEndpoint(launchProfileName));
 
 builder.Build().Run();
 

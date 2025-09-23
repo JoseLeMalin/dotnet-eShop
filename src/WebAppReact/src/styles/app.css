@@ -5,6 +5,10 @@
 @layer base {
   html {
     color-scheme: light dark;
+    display: block;
+
+    padding-inline: 17%;
+    writing-mode: horizontal-tb;
   }
 
   body {
@@ -21,11 +25,6 @@
 
   .root-container {
     display: block;
-    padding-inline: 20%;
-    writing-mode: horizontal-tb;
-    /* flex-flow: column nowrap; */
-
-    min-height: max-content;
   }
 
   .using-mouse * {

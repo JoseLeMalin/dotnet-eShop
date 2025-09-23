@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
+import { User } from "lucide-react";
+
 export function NavBar() {
   return (
     <div className="space-y-2 p-2">
@@ -12,7 +14,7 @@ export function NavBar() {
           activeOptions={{ exact: true }}
         >
           Home
-        </Link>{" "}
+        </Link>
         <Link
           to="/posts"
           activeProps={{
@@ -20,7 +22,7 @@ export function NavBar() {
           }}
         >
           Posts
-        </Link>{" "}
+        </Link>
         <Link
           to="/users"
           activeProps={{
@@ -28,7 +30,7 @@ export function NavBar() {
           }}
         >
           Users
-        </Link>{" "}
+        </Link>
         <Link
           to="/route-a"
           activeProps={{
@@ -36,7 +38,7 @@ export function NavBar() {
           }}
         >
           Pathless Layout
-        </Link>{" "}
+        </Link>
         <Link
           to="/deferred"
           activeProps={{
@@ -44,7 +46,7 @@ export function NavBar() {
           }}
         >
           Deferred
-        </Link>{" "}
+        </Link>
         <Link
           // @ts-expect-error - This route does not exist
           to="/this-route-does-not-exist"
@@ -53,6 +55,14 @@ export function NavBar() {
           }}
         >
           This Route Does Not Exist
+        </Link>
+        <Link
+          to="/deferred"
+          activeProps={{
+            className: "font-bold",
+          }}
+        >
+          <User />
         </Link>
       </div>
     </div>

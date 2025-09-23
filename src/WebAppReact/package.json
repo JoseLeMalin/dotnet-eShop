@@ -7,12 +7,14 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "format": "prettier . --write",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.131.50",
     "@tanstack/react-router-devtools": "^1.131.50",
     "@tanstack/react-start": "^1.131.50",
+    "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwind-merge": "^2.6.0",
@@ -25,6 +27,7 @@
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.3",
     "autoprefixer": "^10.4.20",
+    "editorconfig": "^3.0.1",
     "eslint": "^9.36.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^5.2.0",

@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    //{
+    //  "type": "",
+    //  "request": "launch",
+    //  "name": "localhost (Chrome)",
+    //  "url": "https://localhost:56490",
+    //  "webRoot": "${workspaceFolder}"
+    //},
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "localhost (Chrome)",
+      "url": "https://localhost:56490",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "edge",
+      "request": "launch",
+      "name": "localhost (Edge)",
+      "url": "https://localhost:56490",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

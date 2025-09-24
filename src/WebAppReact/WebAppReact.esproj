@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196">
   <PropertyGroup>
   <ResolveNuGetPackages>false</ResolveNuGetPackages>
-    <StartupCommand>npm run dev</StartupCommand>
+    <!-- <StartupCommand>npm run dev</StartupCommand> -->
+    <StartupCommand>bun run dev</StartupCommand>
     <JavaScriptTestRoot>src\</JavaScriptTestRoot>
     <JavaScriptTestFramework>Vitest</JavaScriptTestFramework>
     <!-- Allows the build (or compile) script located on package.json to run on Build -->

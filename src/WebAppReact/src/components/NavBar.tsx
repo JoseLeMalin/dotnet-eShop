@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import { User } from "lucide-react";
+import { Button } from "./ui/button";
 
 export function NavBar() {
   return (
@@ -40,7 +41,7 @@ export function NavBar() {
           Pathless Layout
         </Link>
         <Link
-          to="/deferred"
+          to="/users"
           activeProps={{
             className: "font-bold",
           }}
@@ -56,14 +57,17 @@ export function NavBar() {
         >
           This Route Does Not Exist
         </Link>
-        <Link
+        <Button variant="link" size="icon" className="size-8">
+          <User />
+        </Button>
+        {/* <Link
           to="/deferred"
           activeProps={{
             className: "font-bold",
           }}
         >
           <User />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

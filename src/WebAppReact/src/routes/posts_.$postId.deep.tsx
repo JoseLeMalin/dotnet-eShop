@@ -1,12 +1,11 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { fetchPost } from "../utils/posts";
+// import { fetchPost } from "../utils/posts";
 import { PostErrorComponent } from "~/components/PostError";
 
 export const Route = createFileRoute("/posts_/$postId/deep")({
-  loader: async ({ params: { postId } }) =>
-    fetchPost({
-      data: postId,
-    }),
+  loader: async ({ params: { postId } }) => {
+    console.log("Load post", postId);
+  },
   errorComponent: PostErrorComponent,
   component: PostDeepComponent,
 });
@@ -22,8 +21,8 @@ function PostDeepComponent() {
       >
         ← All Posts
       </Link>
-      <h4 className="text-xl font-bold underline">{post.title}</h4>
-      <div className="text-sm">{post.body}</div>
+      {/* <h4 className="text-xl font-bold underline">{post.title}</h4>
+      <div className="text-sm">{post.body}</div> */}
     </div>
   );
 }

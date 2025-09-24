@@ -483,6 +483,11 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 
+WebAppReact
+# dependencies
+/node_modules
+**/dist/
+
 # Playwright
 /test-results/
 /playwright-report/

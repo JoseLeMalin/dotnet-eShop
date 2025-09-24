@@ -24,5 +24,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapFallbackToFile("/index.html");
+// app.MapFallbackToFile("/src/main.tsx");
 
 app.Run();

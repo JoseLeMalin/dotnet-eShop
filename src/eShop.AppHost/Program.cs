@@ -1,4 +1,6 @@
 ﻿using eShop.AppHost;
+using Aspire.Hosting.Publishing;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
